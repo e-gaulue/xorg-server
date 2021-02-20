@@ -261,6 +261,14 @@ message_kit_thread(SEL selector, NSObject *arg)
 
 - (void) sendEvent:(NSEvent *)e
 {
+    /* Don't try sending to X if we haven't initialized.  This can happen if AppKit takes over
+     * (eg: uncaught exception) early in launch.
+     */
+    if (!eventTranslationQueue) {
+        [super sendEvent:e];
+        return;
+    }
+
     OSX_BOOL for_appkit, for_x;
 
     /* By default pass down the responder chain and to X. */
