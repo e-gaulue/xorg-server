@@ -50,5 +50,4 @@ EXTRA_DIST = \
 	quartz.h \
 	quartzKeyboard.h \
 	quartzRandR.h \
-	sanitizedCarbon.h \
-	sanitizedCocoa.h
+	sanitizedCarbon.h
